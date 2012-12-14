@@ -28,11 +28,11 @@ var socket = io.connect(window.location.hostname);
       console.log('toggling stream');
 
       if (running) {
-        $(this).html('<i class="icon-play icon-white"></i> Start streaming');
+        $(this).html('<i class="icon-play icon-white"></i> Start streaming live data');
         socket.emit('stop');
       }
       else {
-        $(this).html('<i class="icon-stop icon-white"></i> Stop streaming');
+        $(this).html('<i class="icon-stop icon-white"></i> Stop streaming live data');
         socket.emit('start');
       }
 
