@@ -1,5 +1,5 @@
-# Twitter Earth
+# Earth Tweets
 
-A last minute mashup™
+A mashup of Google's WebGL Globe and Twitter's Streaming API.
 
 **Work in progress**
