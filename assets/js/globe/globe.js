@@ -1,22 +1,3 @@
-//= require third-party/Three/Three
-//= require third-party/Three/RequestAnimationFrame
-//= require third-party/Three/Detector
-//= require third-party/Three/PatchSphereGeometry
-//= require third-party/Tween
-
-/**
- * dat.globe Javascript WebGL Globe Toolkit
- * http://dataarts.github.com/dat.globe
- *
- * Copyright 2011 Data Arts Team, Google Creative Lab
- *
- * Licensed under the Apache License, Version 2.0 (the 'License');
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- */
-
 /**
  * dat.globe Javascript WebGL Globe Toolkit
  * http://dataarts.github.com/dat.globe
@@ -494,12 +475,12 @@ DAT.Globe = function(container, colorFn) {
     id = id.trim();
     if( id != '' ) {
       sprite = new THREE.Sprite( {
-        map: THREE.ImageUtils.loadTexture( id + ".png" ),
+        map: THREE.ImageUtils.loadTexture('/img/' + id + '.png'),
         useScreenCoordinates: false,
         affectedByDistance: false
       } );
       sprite.opacity = 1;
-      sprite.scale.x = sprite.scale.y = sprite.scale.z = 0;
+      // sprite.scale.x = sprite.scale.y = sprite.scale.z = 0;
       /*var opacityTween = new TWEEN
         .Tween( sprite )
         .easing(TWEEN.Easing.Elastic.EaseInOut)

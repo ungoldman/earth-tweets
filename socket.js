@@ -11,16 +11,20 @@ var stream;
 
 function readyStream(io, socket){
   socket.emit('msg','ready to stream');
-  socket.on('start', function(){
-    startStream(socket);
+  socket.on('start', function(data){
+    startStream(socket, data);
   });
   socket.on('stop', function(){
     stopStream(socket);
   });
 }
 
-function startStream(socket){
-  stream = T.stream('statuses/sample');
+function startStream(socket, data){
+  if (data && data.term) {
+    stream = T.stream('statuses/filter', { track: data.term });
+  } else {
+    stream = T.stream('statuses/sample');
+  }
   socket.emit('msg','starting stream');
 
   stream.on('tweet', function (tweet) {
