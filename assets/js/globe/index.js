@@ -5,8 +5,9 @@
 //= require third-party/Tween
 //= require globe
 
-var globeReady = false;
-var globeRunning = false;
+/* Code borrowed from http://www.clicktorelease.com/code/weather/ */
+/* original author: Jaume Sánchez (@thespite) */
+/* modifications by: Nate Goldman (@n8ji) */
 
 var currentGoogleMapsVersion=122;
 

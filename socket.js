@@ -1,10 +1,10 @@
 var socketio = require('socket.io')
   , Twit = require('twit')
   , T = new Twit({
-    consumer_key:         'gQhZN5SsdN5ixIjqgNu9A'
-  , consumer_secret:      'VnVRrrBZPUKCGTMcSSPqmD9Q4kvdrLj735bvxi3n0'
-  , access_token:         '20834739-igfIloARwwoA1RcJFOGwRdhtB6KlDJYSCUHrQ1voB'
-  , access_token_secret:  'uVS5iK2bhyIfnvpiC50yDyGYgVpNO5VRqDvh3RH9Ws'
+    consumer_key:         process.env.EARTH_TWEETS_CONSUMER_KEY
+  , consumer_secret:      process.env.EARTH_TWEETS_CONSUMER_SECRET
+  , access_token:         process.env.EARTH_TWEETS_ACCESS_TOKEN
+  , access_token_secret:  process.env.EARTH_TWEETS_ACCESS_TOKEN_SECRET
 });
 
 var stream;

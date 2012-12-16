@@ -1,11 +1,10 @@
-/* server */
-var express = require('express')
-  , app     = express()
-
-/* middleware */
+/* dependencies */
+var express  = require('express')
   , partials = require('express-partials')
-  , assets   = require('connect-assets');
+  , assets   = require('connect-assets')
+  , app      = express();
 
+/* settings */
 app
   .set('port', process.env.PORT || 3000)
   .set('views', __dirname + '/views')
@@ -28,15 +27,17 @@ app
   })
   .use(app.router);
 
+/* routes */
 app.get('/', function(req, res){
   res.render('index', {
     javascripts: ['globe','client']
   });
 });
 
+/* server */
 var server = app.listen(app.get('port'), function(){
   var hello = [
-    'Tetromino server',
+    'Earth Tweets server',
     '\nport : ' + app.get('port'),
     '\nenv  : ' + app.settings.env,
     '\nlistening...'
@@ -44,4 +45,5 @@ var server = app.listen(app.get('port'), function(){
   console.log(hello[0], hello[1], hello[2], hello[3]);
 });
 
+/* socket */
 var socket = require('./socket').listen(server);
