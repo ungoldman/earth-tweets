@@ -3,6 +3,12 @@
 //= require lib/bootstrap
 //= require lib/ui
 
+window.log = function(){
+  log.history = log.history || [];
+  log.history.push(arguments);
+  if(this.console) console.log(Array.prototype.slice.call(arguments));
+};
+
 var socket = io.connect(window.location.hostname);
 
 (function(window,$){
@@ -12,20 +18,18 @@ var socket = io.connect(window.location.hostname);
     var running = false;
 
     socket.on('msg', function(msg){
-      console.log(msg);
+      log(msg);
     })
 
     socket.on('tweet', function(tweet){
-      console.log(tweet);
       addTweet(tweet, panning);
-      ui.notify(tweet.user.screen_name, tweet.text)
+      ui.notify(tweet.name, tweet.text)
         .hide(8000)
         .effect('slide');
     });
 
     $('#toggle-stream').click(function(e){
       e.preventDefault();
-      console.log('toggling stream');
 
       if (running) {
         $(this).html('<i class="icon-play icon-white"></i> Start streaming live data');
@@ -41,7 +45,6 @@ var socket = io.connect(window.location.hostname);
 
     $('#toggle-panning').click(function(e){
       e.preventDefault();
-      console.log('toggling panning');
 
       if (panning) {
         $(this).html('<i class="icon-map-marker icon-white"></i> Pan to tweets');

@@ -18,14 +18,12 @@ var currentGoogleMapsVersion=122;
 30/08/2001 Fixed mapping, latlng is now accurate (woo-hoo!)
 */
 
-var mapZoom = 3;
-var showInfo = true;
-var fetchCapitals = true;
+var mapZoom = 4;
+// var showInfo = true;
+// var fetchCapitals = true;
 var mapCanvas = document.createElement( 'canvas' );
 var mapCtx = mapCanvas.getContext( '2d' );
 
-var geocoder;
-geocoder = new google.maps.Geocoder();
 var tilesToLoad, tilesLoaded = 0;
 
 if(!Detector.webgl){
@@ -52,15 +50,15 @@ if(!Detector.webgl){
   //   if( fetchCapitals ) fetchCapital();
   // }, false );
 
-  function lockPointer () {
-    if( navigator.pointer ) {
-      navigator.pointer.lock( container, function() {
-        console.log( 'Pointer locked' );
-      }, function() {
-        console.log( 'No pointer lock' );
-      } );
-    }
-  }
+  // function lockPointer () {
+  //   if( navigator.pointer ) {
+  //     navigator.pointer.lock( container, function() {
+  //       console.log( 'Pointer locked' );
+  //     }, function() {
+  //       console.log( 'No pointer lock' );
+  //     } );
+  //   }
+  // }
 
   // var el = document.getElementById( 'fullscreenButton' );
   // if( el ) {
@@ -98,7 +96,6 @@ if(!Detector.webgl){
 
   var container = document.getElementById('container');
   var globe = new DAT.Globe(container);
-  var i, tweens = [];
 
   TWEEN.start();
 
@@ -172,6 +169,6 @@ function composeIconsTile( x, y, z, img ) {
 }
 
 function addTweet(tweet, panTo) {
-  if( panTo ) globe.moveTo( tweet.geo.coordinates[0], tweet.geo.coordinates[1] );
-  globe.addSprite('twitter-icon', tweet.geo.coordinates[0], tweet.geo.coordinates[1], panTo );
+  if(panTo) globe.moveTo(tweet.geo[0], tweet.geo[1]);
+  globe.addSprite('twitter-icon', tweet.geo[0], tweet.geo[1], panTo);
 }

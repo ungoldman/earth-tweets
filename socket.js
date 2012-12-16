@@ -1,4 +1,5 @@
-var socketio = require('socket.io')
+var stream
+  , socketio = require('socket.io')
   , Twit = require('twit')
   , T = new Twit({
     consumer_key:         process.env.EARTH_TWEETS_CONSUMER_KEY
@@ -7,7 +8,23 @@ var socketio = require('socket.io')
   , access_token_secret:  process.env.EARTH_TWEETS_ACCESS_TOKEN_SECRET
 });
 
-var stream;
+function configureSocket(io){
+  if(process.env.LONG_POLLING_REQUIRED){
+    io.configure(function(){
+      io.set("transports", ["xhr-polling"]);
+      io.set("polling duration", 10);
+    });
+  }
+}
+
+function waitForConnection(io) {
+  io.on('connection', function(socket){
+    readyStream(io, socket);
+    socket.on('disconnect', function(){
+      stopStream(socket);
+    });
+  });
+}
 
 function readyStream(io, socket){
   socket.emit('msg','ready to stream');
@@ -27,8 +44,31 @@ function startStream(socket, data){
   }
   socket.emit('msg','starting stream');
 
-  stream.on('tweet', function (tweet) {
-    if (tweet.geo) socket.emit('tweet', tweet);
+
+
+  stream.on('tweet', function (tweet){
+    if (tweet.geo) {
+      socket.emit('tweet', {
+        'text': tweet.text,
+        name: tweet.user.screen_name,
+        geo: tweet.geo.coordinates,
+        type: 'geo'
+      });
+    } else if (tweet.coordinates && tweet.coordinates.type == 'Point') {
+      socket.emit('tweet', {
+        'text': tweet.text,
+        name: tweet.user.screen_name,
+        geo: tweet.coordinates.coordinates,
+        type: 'point'
+      });
+    } else if (tweet.place && tweet.place.bounding_box.type == 'Polygon') {
+      socket.emit('tweet', {
+        'text': tweet.text,
+        name: tweet.user.screen_name,
+        geo: tweet.place.bounding_box.coordinates[0][0],
+        type: 'polygon'
+      });
+    }
   });
 }
 
@@ -37,26 +77,12 @@ function stopStream(socket){
   socket.emit('msg','stream stopped');
 }
 
-function connect(io) {
-  io.on('connection', function(socket) {
-    readyStream(io, socket);
-    socket.on('disconnect', function() {
-      stopStream(socket);
-    });
-  });
-}
-
 module.exports = {
   listen: function(server) {
     var io = socketio.listen(server, { "log level": 1 });
 
-    if(process.env.LONG_POLLING_REQUIRED){
-      io.configure(function () {
-        io.set("transports", ["xhr-polling"]);
-        io.set("polling duration", 10);
-      });
-    }
+    configureSocket(io);
 
-    return connect(io);
+    return waitForConnection(io);
   }
 };

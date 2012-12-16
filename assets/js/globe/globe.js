@@ -390,8 +390,8 @@ DAT.Globe = function(container, colorFn) {
 
   function zoom(delta) {
     distanceTarget -= delta;
-    distanceTarget = distanceTarget > 1000 ? 1000 : distanceTarget;
-    distanceTarget = distanceTarget < 350 ? 350 : distanceTarget;
+    distanceTarget = distanceTarget > 1100 ? 1100 : distanceTarget;
+    distanceTarget = distanceTarget < 300 ? 300 : distanceTarget;
   }
 
   function animate() {
