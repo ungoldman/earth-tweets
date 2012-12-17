@@ -12,8 +12,6 @@ app
   .use(express.favicon())
   .use(express.bodyParser())
   .use(express.methodOverride())
-  .use(express.cookieParser('roar'))
-  .use(express.session({secret : 'secrets'}))
   .use(express.static(__dirname + '/public'))
   .use(partials())
   .use(assets())
