@@ -6,7 +6,7 @@ var express  = require('express')
 
 /* settings */
 app
-  .set('port', process.env.PORT || 3000)
+  .set('port', process.env.PORT || process.env.VCAP_APP_PORT || 3000)
   .set('views', __dirname + '/views')
   .set('view engine', 'ejs')
   .use(express.favicon())
