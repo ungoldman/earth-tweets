@@ -5,19 +5,11 @@
 //= require third-party/Tween
 //= require globe
 
-/* Code borrowed from http://www.clicktorelease.com/code/weather/ */
+/* Code below borrowed from http://www.clicktorelease.com/code/weather/ */
 /* original author: Jaume Sánchez (@thespite) */
 /* modifications by: Nate Goldman (@n8ji) */
 
 var currentGoogleMapsVersion=122;
-
-/*
-27/08/2011 Added node.js script to cache weather conditions
-28/08/2011 Added full CORS support, snapshot option
-29/08/2011 Added preload to tiles, option to toggle icons, option to toggle info
-30/08/2001 Fixed mapping, latlng is now accurate (woo-hoo!)
-*/
-
 var mapZoom = 4;
 // var showInfo = true;
 // var fetchCapitals = true;

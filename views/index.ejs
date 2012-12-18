@@ -1,22 +1,32 @@
-<div id="container"></div>
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+  <meta charset="UTF-8">
+  <title>Earth Tweets</title>
+  <%- css('style') %>
+</head>
+<body>
 
-<div id="title">
-  Earth Tweets
+<div class="wrapper">
+  <div id="container"></div>
+
+  <div id="title">Earth Tweets</div>
+
+  <div id="currentInfo">
+    <p>This is a mashup of the Google Data Arts Team's WebGL Globe project and the Twitter Streaming API. Live data is piped in from Twitter to a Node.js server, then sent to the browser through a bidirectional WebSocket connection and mapped onto a three-dimensional map of the Earth in real time.</p>
+
+    <p><strong>Click</strong> on the planet and <strong>drag around</strong>. Use <strong>mousewheel</strong> or <strong>up</strong> and <strong>down</strong> arrows to zoom.</p>
+
+    <p><button id="toggle-stream" class="btn btn-inverse"><i class="icon-play icon-white"></i> Start streaming live data</button></p>
+    <p><button id="toggle-panning" class="btn btn-inverse"><i class="icon-map-marker icon-white"></i> Stop panning to tweets</button></p>
+  </div>
+
+  <div id="info">Based on <strong><a href="http://www.chromeexperiments.com/globe" target="_blank">WebGL Globe</a></strong> by the Google Data Arts Team <span class="bull">&bull;</span> Data acquired from <a href="https://dev.twitter.com/docs/streaming-apis" target="_blank">Twitter Streaming API</a></div>
 </div>
 
-<div id="currentInfo">
-  <p>
-    This is a mashup of the Google Data Arts Team's WebGL Globe project and the Twitter Streaming API. Live data is piped in from Twitter to a Node.js server, then sent to the browser through a bidirectional WebSocket connection and mapped onto a three-dimensional map of the Earth in real time.
-  </p>
+<script src="/socket.io/socket.io.js"></script>
+<script src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
+<%- js('client') %>
 
-  <p class="description">
-    <strong>Click</strong> on the planet and <strong>drag around</strong>. Use <strong>mousewheel</strong> or <strong>up</strong> and <strong>down</strong> arrows to zoom.
-  </p>
-
-  <p><button id="toggle-stream" class="btn btn-inverse"><i class="icon-play icon-white"></i> Start streaming live data</button></p>
-  <p><button id="toggle-panning" class="btn btn-inverse"><i class="icon-map-marker icon-white"></i> Stop panning to tweets</button></p>
-</div>
-
-<div id="info">
-  Based on <strong><a href="http://www.chromeexperiments.com/globe" target="_blank">WebGL Globe</a></strong> by the Google Data Arts Team <span class="bull">&bull;</span> Data acquired from <a href="https://dev.twitter.com/docs/streaming-apis" target="_blank">Twitter Streaming API</a>
-</div>
+</body>
+</html>

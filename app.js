@@ -1,6 +1,5 @@
 /* dependencies */
 var express  = require('express')
-  , partials = require('express-partials')
   , assets   = require('connect-assets')
   , app      = express();
 
@@ -13,7 +12,6 @@ app
   .use(express.bodyParser())
   .use(express.methodOverride())
   .use(express.static(__dirname + '/public'))
-  .use(partials())
   .use(assets())
   .configure('development', function(){
     app.use(express.logger('dev'))
@@ -27,9 +25,7 @@ app
 
 /* routes */
 app.get('/', function(req, res){
-  res.render('index', {
-    javascripts: ['globe','client']
-  });
+  res.render('index');
 });
 
 /* server */
