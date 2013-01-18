@@ -9,7 +9,7 @@
 /* original author: Jaume Sánchez (@thespite) */
 /* modifications by: Nate Goldman (@n8ji) */
 
-var currentGoogleMapsVersion=122;
+var currentGoogleMapsVersion=123;
 var mapZoom = 4;
 // var showInfo = true;
 // var fetchCapitals = true;
@@ -21,70 +21,6 @@ var tilesToLoad, tilesLoaded = 0;
 if(!Detector.webgl){
   Detector.addGetWebGLMessage();
 } else {
-
-  // el = document.getElementById( 'searchButton' );
-  // el.addEventListener( 'click', function( event ) {
-  //   event.preventDefault();
-  //   findAddress( document.getElementById("address").value, true );
-  // }, false );
-
-  // el = document.getElementById( 'snapButton' );
-  // el.addEventListener( 'click', function( event ) {
-  //   event.preventDefault();
-  //   globe.takeSnapshot();
-  // }, false );
-
-  // el = document.getElementById( 'iconsButton' );
-  // el.addEventListener( 'click', function( event ) {
-  //   event.preventDefault();
-  //   fetchCapitals = !fetchCapitals;
-  //   globe.toggleIcons();
-  //   if( fetchCapitals ) fetchCapital();
-  // }, false );
-
-  // function lockPointer () {
-  //   if( navigator.pointer ) {
-  //     navigator.pointer.lock( container, function() {
-  //       console.log( 'Pointer locked' );
-  //     }, function() {
-  //       console.log( 'No pointer lock' );
-  //     } );
-  //   }
-  // }
-
-  // var el = document.getElementById( 'fullscreenButton' );
-  // if( el ) {
-  //   el.addEventListener( 'click', function( e ) {
-  //     container.onwebkitfullscreenchange = function(e) {
-  //       lockPointer();
-  //       container.onwebkitfullscreenchange = function() {
-  //       };
-  //     };
-  //     container.onmozfullscreenchange = function(e) {
-  //       lockPointer();
-  //       container.onmozfullscreenchange = function() {
-  //       };
-  //     };
-  //     if( container.webkitRequestFullScreen ) container.webkitRequestFullScreen();
-  //     if( container.mozRequestFullScreen ) container.mozRequestFullScreen();
-  //     e.preventDefault();
-  //   }, false );
-  // }
-
-  // el = document.getElementById( 'toggleInfoButton' );
-  // el.addEventListener( 'click', function( event ) {
-  //   event.preventDefault();
-  //   var title = document.getElementById( 'title' );
-  //   var text = document.getElementById( 'text' );
-  //   showInfo = !showInfo
-  //   if( showInfo ) {
-  //     title.style.opacity = 1;
-  //     text.style.opacity = 1;
-  //   } else {
-  //     title.style.opacity = 0;
-  //     text.style.opacity = 0;
-  //   }
-  // }, false );
 
   var container = document.getElementById('container');
   var globe = new DAT.Globe(container);
