@@ -43,6 +43,7 @@ function readyStream(io, socket) {
 
 function startStream(socket, data) {
   if (data && data.term) {
+    console.log('filtering by search term: "' + data.term + '"')
     stream = T.stream('statuses/filter', { track: data.term })
   }
 

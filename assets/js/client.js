@@ -16,6 +16,7 @@ window.log = function(){
   function init(){
     var panning  = true,
         running  = false,
+        $filter  = $('#filter'),
         $panning = $('#toggle-panning'),
         $stream  = $('#toggle-stream')
 
@@ -36,31 +37,27 @@ window.log = function(){
       if (running) {
         socket.emit('stop')
 
+        $filter.removeAttr('disabled')
         $stream.html('<i class="icon-play icon-white"></i> Start streaming live data')
-        $panning.attr('disabled', 'disabled')
       }
 
       else {
-        socket.emit('start')
+        if ($filter.val() != '') {
+          socket.emit('start', { term: $filter.val() })
+        }
 
+        else {
+          socket.emit('start')
+        }
+
+        $filter.attr('disabled','disabled')
         $stream.html('<i class="icon-stop icon-white"></i> Stop streaming live data')
-        $panning.removeAttr('disabled')
       }
 
       running = !running
     })
 
     $panning.click(function(e){
-      e.preventDefault()
-
-      if (panning) {
-        $panning.html('<i class="icon-map-marker icon-white"></i> Pan to tweets')
-      }
-
-      else {
-        $panning.html('<i class="icon-map-marker icon-white"></i> Stop panning to tweets')
-      }
-
       panning = !panning
     })
   }

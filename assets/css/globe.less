@@ -41,6 +41,7 @@ body {
 
 a {
   color: #fff;
+  font-weight: bold;
   text-decoration: none;
 
   &:hover {
@@ -100,4 +101,14 @@ a {
   background: url(/img/ce.png);
 
   span { display: none }
+}
+
+#filter {
+  background: rgba(0,0,0,.4);
+  border-color: rgba(155,155,155,.2);
+  color: #eee;
+  margin-bottom: 0;
+  width: 95%;
+
+  &[disabled] { color: #744 }
 }

@@ -15,7 +15,7 @@
   <div id="currentInfo">
     <p class="byline"><small>by <a href="http://github.com/ngoldman">ngoldman</a></small></p>
 
-    <p>This is a mashup of the Google Data Arts Team's WebGL Globe project and the Twitter Streaming API. Live data is piped in from Twitter to a Node.js server, then sent to the browser through a bidirectional WebSocket connection and mapped onto a three-dimensional map of the Earth in real time.</p>
+    <p>This is a mashup of the Google Data Arts Team's WebGL Globe project and the Twitter Streaming API. A random sampling of live data is piped in from Twitter to a <a href="http://nodejs.org/">Node.js</a> server, then sent to the browser using <a href="http://en.wikipedia.org/wiki/WebSocket">WebSockets</a> connection and mapped onto a WebGL map of the planet using <a href="http://mrdoob.github.com/three.js/">Three.js</a>.</p>
 
     <p>
       <strong>Click</strong> on the planet and <strong>drag around</strong>.
@@ -24,23 +24,26 @@
     </p>
 
     <p>
+      <label class="checkbox">
+        <input id="toggle-panning" type="checkbox" checked="checked"> Pan to new tweets
+      </label>
+    </p>
+
+    <p>
       <button id="toggle-stream" class="btn btn-danger btn-block" disabled="disabled">
         <i class="icon-play icon-white"></i> Start streaming live data
       </button>
     </p>
-    <p>
-      <button id="toggle-panning" class="btn btn-inverse btn-block" disabled="disabled">
-        <i class="icon-map-marker icon-white"></i> Stop panning to tweets
-      </button>
-    </p>
+
+    <input id="filter" type="text" placeholder="filter results by search term">
   </div>
 
   <div id="info">
-    Based on <strong><a href="http://www.chromeexperiments.com/globe" target="_blank">WebGL Globe</a></strong> by the Google Data Arts Team
+    Based on <a href="http://www.chromeexperiments.com/globe" target="_blank">WebGL Globe</a> by the Google Data Arts Team
     <span class="bull">&bull;</span>
-    Data acquired from <a href="https://dev.twitter.com/docs/streaming-apis" target="_blank"><strong>Twitter Streaming API</strong></a>
+    Data acquired from <a href="https://dev.twitter.com/docs/streaming-apis" target="_blank">Twitter Streaming API</a>
     <span class="bull">&bull;</span>
-    <a href="http://github.com/ngoldman/earth-tweets"><strong>View Source</strong></a> on Github
+    <a href="http://github.com/ngoldman/earth-tweets">View Source</a> on Github
   </div>
 </div>
 
