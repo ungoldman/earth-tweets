@@ -1,6 +1,6 @@
 {
   "name": "earth-tweets",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A mashup of Google's WebGL Globe and Twitter's Streaming API",
   "private": true,
   "main": "app.js",
