@@ -1,7 +1,8 @@
 /* dependencies */
-var express  = require('express')
-  , assets   = require('connect-assets')
-  , app      = express();
+var express  = require('express'),
+    assets   = require('connect-assets'),
+    infos    = require('./package.json'),
+    app      = express()
 
 /* settings */
 app
@@ -15,29 +16,29 @@ app
   .use(assets())
   .configure('development', function(){
     app.use(express.logger('dev'))
-      .use(express.errorHandler({ dumpExceptions: true, showStack: true }));
+      .use(express.errorHandler({
+        dumpExceptions: true,
+        showStack: true
+      }))
   })
   .configure('production', function(){
-    app.use(express.logger())
-      .use(express.errorHandler());
+    app.use(express.logger()).use(express.errorHandler())
   })
-  .use(app.router);
+  .use(app.router)
 
 /* routes */
-app.get('/', function(req, res){
-  res.render('index');
-});
+app.get('/', function(req, res) { res.render('index') })
 
 /* server */
 var server = app.listen(app.get('port'), function(){
-  var hello = [
-    'Earth Tweets server',
-    '\nport : ' + app.get('port'),
-    '\nenv  : ' + app.settings.env,
-    '\nlistening...'
-  ];
-  console.log(hello[0], hello[1], hello[2], hello[3]);
-});
+  [
+    'Earth Tweets ' + infos.version,
+    'port : ' + app.get('port'),
+    'env  : ' + app.settings.env,
+    '[√] express server ready'
+  ]
+  .forEach(function(str){ console.log(str) })
 
-/* socket */
-var socket = require('./socket').listen(server);
+  /* socket */
+  var socket = require('./socket').listen(server)
+})

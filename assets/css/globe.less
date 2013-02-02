@@ -1,6 +1,5 @@
-html {
-  height: 100%;
-}
+html { height: 100% }
+
 body {
   margin: 0;
   padding: 0;
@@ -14,14 +13,13 @@ body {
   font-size: 13px;
   line-height: 20px;
   height: 100%;
-}
 
-body.loaded {
-  background: #000000 url(/img/pixel-) center center no-repeat;
+  &.loaded {
+    background: #000000 url(/img/pixel-space.png) center center no-repeat
+  }
 }
 
 #info {
-
   font-size: 11px;
   position: absolute;
   bottom: 5px;
@@ -44,14 +42,16 @@ body.loaded {
 a {
   color: #fff;
   text-decoration: none;
-}
-a:hover {
-  text-decoration: underline;
+
+  &:hover {
+    color: #aaa;
+    text-decoration: underline;
+  }
 }
 
 .bull {
   padding: 0 5px;
-  color: #555;
+  color: #aaa;
 }
 
 #title {
@@ -63,6 +63,12 @@ a:hover {
   border-radius: 3px;
   font: 20px Georgia;
   padding: 10px;
+
+  small {
+    font-size: 15px;
+    font-weight: normal;
+    opacity: .7;
+  }
 }
 
 .year {
@@ -78,13 +84,10 @@ a:hover {
   -webkit-transition: all 0.1s ease-out;
 }
 
-.year:hover, .year.active {
+.year:hover,
+.year.active {
   font-size: 23px;
   color: #fff;
-}
-
-#ce span {
-  display: none;
 }
 
 #ce {
@@ -95,4 +98,6 @@ a:hover {
   bottom: 15px;
   left: 20px;
   background: url(/img/ce.png);
+
+  span { display: none }
 }

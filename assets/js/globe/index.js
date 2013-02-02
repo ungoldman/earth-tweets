@@ -48,6 +48,7 @@ if(!Detector.webgl){
 
 function start() {
   globe.animate();
+  $('#toggle-stream').removeAttr('disabled');
 }
 
 function fetchTile( x, y, z ) {
