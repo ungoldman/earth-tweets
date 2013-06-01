@@ -9,7 +9,7 @@
 /* original author: Jaume Sánchez (@thespite) */
 /* modifications by: Nate Goldman (@n8ji) */
 
-var currentGoogleMapsVersion=128;
+//var currentGoogleMapsVersion=128;
 var mapZoom = 4;
 // var showInfo = true;
 // var fetchCapitals = true;
