@@ -4,6 +4,8 @@ A mashup of Google's WebGL Globe and Twitter's Streaming API.
 
 ![screenshot](screenshot.png)
 
+Created December 2012.
+
 ## Setup
 
 This tech demo requires a working copy of Node.js, a browser, and an internet connection.
